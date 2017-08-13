@@ -5,7 +5,7 @@ import rover._
 
 class RoverSpec extends FlatSpec{
   val rover = Rover(
-    compass = North,
+    compassDirection = North,
     position = Position(0, 0)
   )
 
@@ -39,10 +39,10 @@ class RoverSpec extends FlatSpec{
     assert(invalidDirection === NoDirection)
   }
 
-  val northFacingCompass: Compass = North
-  val southFacingCompass: Compass = South
-  val eastFacingCompass: Compass = East
-  val westFacingCompass: Compass = West
+  val northFacingCompass: CompassDirection = North
+  val southFacingCompass: CompassDirection = South
+  val eastFacingCompass: CompassDirection = East
+  val westFacingCompass: CompassDirection = West
 
   "updating a north facing compass after a left turn" should "return West" in {
     val turn = northFacingCompass.update(Left)
@@ -99,7 +99,7 @@ class RoverSpec extends FlatSpec{
   }
 
   "moving the rover forward when it is facing south" should "update the rover's y location minus 1" in {
-    val rover = Rover(position = Position(0,0), compass = South)
+    val rover = Rover(position = Position(0,0), compassDirection = South)
     val oldRover = rover
     val newRover = rover.move(Forward)
     assert(newRover.position.y === oldRover.position.y - 1)
@@ -107,7 +107,7 @@ class RoverSpec extends FlatSpec{
   }
 
   "moving the rover backward when it is facing south" should "update the rover's y location plus 1" in {
-    val rover = Rover(position = Position(0,0), compass = South)
+    val rover = Rover(position = Position(0,0), compassDirection = South)
     val oldRover = rover
     val newRover = rover.move(Backward)
     assert(newRover.position.y === oldRover.position.y + 1)
@@ -115,7 +115,7 @@ class RoverSpec extends FlatSpec{
   }
 
   "moving the rover forward when it is facing east" should "update the rover's x location plus 1" in {
-    val rover = Rover(position = Position(0,0), compass = East)
+    val rover = Rover(position = Position(0,0), compassDirection = East)
     val oldRover = rover
     val newRover = rover.move(Forward)
     assert(newRover.position.y === oldRover.position.y)
@@ -123,7 +123,7 @@ class RoverSpec extends FlatSpec{
   }
 
   "moving the rover backward when it is facing east" should "update the rover's y location minus 1" in {
-    val rover = Rover(position = Position(0,0), compass = East)
+    val rover = Rover(position = Position(0,0), compassDirection = East)
     val oldRover = rover
     val newRover = rover.move(Backward)
     assert(newRover.position.y === oldRover.position.y)
@@ -131,7 +131,7 @@ class RoverSpec extends FlatSpec{
   }
 
   "moving the rover forward when it is facing west" should "update the rover's x location minus 1" in {
-    val rover = Rover(position = Position(0,0), compass = West)
+    val rover = Rover(position = Position(0,0), compassDirection = West)
     val oldRover = rover
     val newRover = rover.move(Forward)
     assert(newRover.position.y === oldRover.position.y)
@@ -139,7 +139,7 @@ class RoverSpec extends FlatSpec{
   }
 
   "moving the rover backward when it is facing west" should "update the rover's y location plus 1" in {
-    val rover = Rover(position = Position(0,0), compass = West)
+    val rover = Rover(position = Position(0,0), compassDirection = West)
     val oldRover = rover
     val newRover = rover.move(Backward)
     assert(newRover.position.y === oldRover.position.y)
@@ -147,59 +147,59 @@ class RoverSpec extends FlatSpec{
   }
 
   "turning the rover left when it is facing north" should "turns the rover to face West" in {
-    val rover = Rover(position = Position(0,0), compass = North)
+    val rover = Rover(position = Position(0,0), compassDirection = North)
     val oldRover = rover
     val newRover = rover.rotate(Left)
-    assert(newRover.compass === West)
+    assert(newRover.compassDirection === West)
   }
 
   "turning the rover right when it is facing north" should "turns the rover to face East" in {
-    val rover = Rover(position = Position(0,0), compass = North)
+    val rover = Rover(position = Position(0,0), compassDirection = North)
     val oldRover = rover
     val newRover = rover.rotate(Right)
-    assert(newRover.compass === East)
+    assert(newRover.compassDirection === East)
   }
 
   "turning the rover left when it is facing south" should "turns the rover to face East" in {
-    val rover = Rover(position = Position(0,0), compass = South)
+    val rover = Rover(position = Position(0,0), compassDirection = South)
     val oldRover = rover
     val newRover = rover.rotate(Left)
-    assert(newRover.compass === East)
+    assert(newRover.compassDirection === East)
   }
 
   "turning the rover right when it is facing north" should "turns the rover to face West" in {
-    val rover = Rover(position = Position(0,0), compass = South)
+    val rover = Rover(position = Position(0,0), compassDirection = South)
     val oldRover = rover
     val newRover = rover.rotate(Right)
-    assert(newRover.compass === West)
+    assert(newRover.compassDirection === West)
   }
 
   "turning the rover left when it is facing east" should "turns the rover to face North" in {
-    val rover = Rover(position = Position(0,0), compass = East)
+    val rover = Rover(position = Position(0,0), compassDirection = East)
     val oldRover = rover
     val newRover = rover.rotate(Left)
-    assert(newRover.compass === North)
+    assert(newRover.compassDirection === North)
   }
 
   "turning the rover right when it is facing east" should "turns the rover to face South" in {
-    val rover = Rover(position = Position(0,0), compass = East)
+    val rover = Rover(position = Position(0,0), compassDirection = East)
     val oldRover = rover
     val newRover = rover.rotate(Right)
-    assert(newRover.compass === South)
+    assert(newRover.compassDirection === South)
   }
 
   "turning the rover left when it is facing west" should "turns the rover to face South" in {
-    val rover = Rover(position = Position(0,0), compass = West)
+    val rover = Rover(position = Position(0,0), compassDirection = West)
     val oldRover = rover
     val newRover = rover.rotate(Left)
-    assert(newRover.compass === South)
+    assert(newRover.compassDirection === South)
   }
 
   "turning the rover right when it is facing west" should "turns the rover to face South" in {
-    val rover = Rover(position = Position(0,0), compass = West)
+    val rover = Rover(position = Position(0,0), compassDirection = West)
     val oldRover = rover
     val newRover = rover.rotate(Right)
-    assert(newRover.compass === North)
+    assert(newRover.compassDirection === North)
   }
 
 }

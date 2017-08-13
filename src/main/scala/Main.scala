@@ -2,9 +2,9 @@ package rover
 
 import scala.io.StdIn._
 
-object RoverApp extends App {
+object Main {
   val rover = Rover(
-    compass = North,
+    compassDirection = North,
     position = Position(0, 0)
   )
 
@@ -19,12 +19,27 @@ object RoverApp extends App {
         rover
       }
       case _  => {
-        println("please type a valid input to move the rover.")
+        println(validInputsMessage + intro)
         loop(rover)
       }
     }
   }
 
-  loop(rover)
+  val intro: String =
+    """
+      |Controls for the Mars rover:
+      |f: move the rover 1 unit forward
+      |b: move the rover 1 unit backward
+      |l: rotate the rover 90 degrees left
+      |r: rotate the rover 90 degrees right
+      |e: exit the application
+    """.stripMargin
+
+  val validInputsMessage: String = "Please type a valid input to move the rover."
+
+  def main(args: Array[String]): Unit = {
+    println(intro)
+   loop(rover)
+  }
 
 }
