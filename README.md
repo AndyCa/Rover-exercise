@@ -8,6 +8,5 @@ Controls for the Mars rover:
 * e: exit the application
 
 To run the program:
-* Download sbt and add to environment variables path.
-** http://www.scala-sbt.org/download.html
+* Download sbt and add to environment variables path - http://www.scala-sbt.org/download.html.
 * Use command 'sbt run'
