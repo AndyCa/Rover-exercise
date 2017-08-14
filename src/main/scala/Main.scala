@@ -3,9 +3,11 @@ package rover
 import scala.io.StdIn._
 
 object Main {
+  val mars = Mars(length = 50)
+
   val rover = Rover(
     compassDirection = North,
-    position = Position(0, 0)
+    position = Position(0, 0, mars)
   )
 
   def loop(rover: Rover): Rover = {
