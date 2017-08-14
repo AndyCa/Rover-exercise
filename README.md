@@ -9,5 +9,5 @@ Controls for the Mars rover:
 
 To run the program:
 * Download sbt and add to environment variables path.
-** http://www.scala-sbt.org/0.13/docs/Installing-sbt-on-Windows.html
+** http://www.scala-sbt.org/download.html
 * Use command 'sbt run'
